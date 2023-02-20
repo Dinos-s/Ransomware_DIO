@@ -1,0 +1,20 @@
+import os
+import pyes
+
+## aquirvo encriptado
+
+fileN = "test.txt.ransomwaretroll"
+file = open(fileN, "rb")
+dataFile = file.read()
+file.close()
+
+key = b"moduloaleatorioteste"
+aes = pyaes.AESModeOfOperationCTR(key)
+decripter = aes.decrypt(dataFile)
+
+os.remove(fileN)
+
+newFile = "teste.txt"
+newFile = open(f'{newFile}', "wb")
+newFile.write(decripter)
+newFile.close()
